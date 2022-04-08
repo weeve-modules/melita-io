@@ -1,0 +1,10 @@
+version: '1'
+services:
+  melita_io:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      MODULE_NAME: melita_io
+      HOST_NAME: 127.0.0.1
+      HOST_PORT: 80
