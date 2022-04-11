@@ -68,6 +68,43 @@ Melita.IO API module.
 - suspendResumeDevice
 - getDeviceUsage
 
+## Payload for POST request looks like, depending on the command, params can be different, but deviceEUI needs to be passed always
+```js
+{
+	"data":{
+		"command": {
+			"name": "addDownlinkDeviceQueue",
+			"deviceEUI":"70B3D52DD3003E30",
+			"params": {				
+					"confirmed": true,
+					"data": "14161712131819151B22",
+					"devEUI": "70B3D52DD3003E30",
+					"fPort": 1				
+			}
+		}
+	}
+}
+```
+* If command is successful output is passed to other module or returned in response as:
+```js
+{
+	"status": true,
+	"data": {
+		"fCnt": 57
+	}
+}
+```
+* In the case of bad input or error, response is passed to ERROR_URL if specified or returned in response as:
+```js
+{
+	"status": false,
+	"data": {
+		"httpStatus": "BAD_REQUEST",
+		"timestamp": "11-04-2022 03:46:20",
+		"message": "<error message>"
+	}
+}
+```
 ## Dependencies
 
 ```js
