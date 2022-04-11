@@ -69,23 +69,26 @@ Melita.IO API module.
 - getDeviceUsage
 
 ## Payload for POST request looks like, depending on the command, params can be different, but deviceEUI needs to be passed always
+
 ```js
 {
 	"data":{
 		"command": {
 			"name": "addDownlinkDeviceQueue",
 			"deviceEUI":"70B3D52DD3003E30",
-			"params": {				
+			"params": {
 					"confirmed": true,
 					"data": "14161712131819151B22",
 					"devEUI": "70B3D52DD3003E30",
-					"fPort": 1				
+					"fPort": 1
 			}
 		}
 	}
 }
 ```
-* If command is successful output is passed to other module or returned in response as:
+
+- If command is successful output is passed to other module or returned in response as:
+
 ```js
 {
 	"status": true,
@@ -94,7 +97,9 @@ Melita.IO API module.
 	}
 }
 ```
-* In the case of bad input or error, response is passed to ERROR_URL if specified or returned in response as:
+
+- In the case of bad input or error, response is passed to ERROR_URL if specified or returned in response as:
+
 ```js
 {
 	"status": false,
@@ -105,6 +110,7 @@ Melita.IO API module.
 	}
 }
 ```
+
 ## Dependencies
 
 ```js

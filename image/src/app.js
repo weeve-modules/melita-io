@@ -67,7 +67,8 @@ app.post('/', async (req, res) => {
   }
   let result = false
   if (EXECUTE_SINGLE_COMMAND == 'yes') {
-    result = await processCommand(SINGLE_COMMAND, json)
+    json.data.command.name = SINGLE_COMMAND
+    result = await processCommand(json)
   } else {
     result = await processCommand(json)
   }
