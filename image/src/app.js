@@ -62,7 +62,7 @@ app.post('/', async (req, res) => {
   if (typeof json.data.command.params === 'undefined') {
     return res.status(400).json({ status: false, message: 'Parameters are missing.' })
   }
-  if (typeof json.data.command.params.deviceEUI === 'undefined') {
+  if (typeof json.data.command.deviceEUI === 'undefined') {
     return res.status(400).json({ status: false, message: 'Missing deviceEUI.' })
   }
   let result = false
@@ -74,7 +74,7 @@ app.post('/', async (req, res) => {
   if (result === false) {
     return res.status(400).json({ status: false, message: 'Bad command or Parameters provided.' })
   }
-  if (result.status && result.status === false && ERROR_URL != '') {
+  if (typeof result.status !== 'undefined' && result.status === false && ERROR_URL != '') {
     const callRes = await fetch(ERROR_URL, {
       method: 'POST',
       headers: {
@@ -100,10 +100,13 @@ app.post('/', async (req, res) => {
     return res.status(200).json({ status: true, message: 'Payload processed' })
   } else {
     // parse data property, and update it
-    return res.status(200).json({
-      status: true,
-      data: result,
-    })
+    if (typeof result.status !== 'undefined' && result.status === false) {
+      return res.status(400).json(result)
+    } else
+      return res.status(200).json({
+        status: true,
+        data: result,
+      })
   }
 })
 

@@ -8,7 +8,7 @@ const qs = require('querystring')
 const fetch = require('node-fetch')
 
 const getAuthToken = async () => {
-  let res = fetch(MELITA_API_URL, {
+  let res = await fetch(`${MELITA_API_URL}/auth/generate`, {
     method: 'POST',
     headers: {
       ApiKey: AUTHENTICATION_API_KEY,
@@ -47,6 +47,7 @@ const processCommand = async json => {
   let path = null
   let command = json.data.command.name
   let params = json.data.command.params
+  let deviceEUI = json.data.command.deviceEUI
   switch (command) {
     case 'createDevice':
       method = 'POST'
@@ -78,62 +79,64 @@ const processCommand = async json => {
       break
     case 'updateDeviceLabel':
       method = 'PUT'
-      path = `/${params.deviceEUI}/${params.label}`
+      path = `/${deviceEUI}/${params.label}`
       break
     case 'getContractDevice':
       method = 'GET'
-      path = `/${params.deviceEUI}`
+      path = `/${deviceEUI}`
       break
     case 'updateDeviceProfile':
       method = 'PUT'
-      path = `/${params.deviceEUI}`
+      path = `/${deviceEUI}`
       break
     case 'removeDevice':
       method = 'DELETE'
-      path = `/${params.deviceEUI}`
+      path = `/${deviceEUI}`
       break
     case 'getDeviceApiKey':
       method = 'GET'
-      path = `/${params.deviceEUI}/appKey`
+      path = `/${deviceEUI}/appKey`
       break
     case 'getDeviceQueue':
       method = 'GET'
-      path = `/${params.deviceEUI}/queue`
+      path = `/${deviceEUI}/queue`
       break
     case 'addDownlinkDeviceQueue':
       method = 'POST'
-      path = `/${params.deviceEUI}/queue`
+      path = `/${deviceEUI}/queue`
       break
     case 'flushDeviceQueue':
       method = 'DELETE'
-      path = `/${params.deviceEUI}/queue`
+      path = `/${deviceEUI}/queue`
       break
     case 'suspendResumeDevice':
       method = 'POST'
-      path = `/${params.deviceEUI}/status`
+      path = `/${deviceEUI}/status`
       break
     case 'getDeviceUsage':
       method = 'GET'
-      path = `/${params.deviceEUI}/usage`
+      path = `/${deviceEUI}/usage`
       break
   }
   if (method === null) return false
   let q_params = ''
   if (method === 'GET') q_params = `?${qs.stringify(params)}`
-  let res = fetch(`${MELITA_API_URL}${path}${q_params}`, {
+  let res = await fetch(`${MELITA_API_URL}/lorawan${path}${q_params}`, {
     method: method,
     headers: {
       Authorization: `Bearer ${authToken}`,
       accept: 'application/json',
+      'Content-Type': 'application/json',
     },
-    body: method !== 'GET' ? JSON.stringify(params) : '',
+    body: method !== 'GET' ? JSON.stringify(params) : null,
   })
   if (res.ok) {
     return await res.json()
   } else {
+    let err = await res.json()
     return {
       status: false,
-      message: 'Invalid request data.',
+      data: err.error,
     }
   }
 }

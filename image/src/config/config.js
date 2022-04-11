@@ -7,7 +7,7 @@ module.exports = {
   EGRESS_URL: env('EGRESS_URL', ''),
   EXECUTE_SINGLE_COMMAND: env('EXECUTE_SINGLE_COMMAND', 'no'),
   SINGLE_COMMAND: env('SINGLE_COMMAND', 'addDownlinkDeviceQueue'),
-  AUTHENTICATION_API_KEY: env('AUTHENTICATION_API_KEY', 'fa698295c740f81b3eb238569d2b9123'),
+  AUTHENTICATION_API_KEY: env('AUTHENTICATION_API_KEY', ''),
   ERROR_URL: env('ERROR_URL', ''),
-  MELITA_API_URL: env('MELITA_API_URL', 'https://www.melita.io/api/iot-gateway/lorawan/'),
+  MELITA_API_URL: env('MELITA_API_URL', 'https://www.melita.io/api/iot-gateway'),
 }
