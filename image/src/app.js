@@ -59,17 +59,17 @@ app.post('/', async (req, res) => {
   if (EXECUTE_SINGLE_COMMAND == 'no' && typeof json.data.command === 'undefined') {
     return res.status(400).json({ status: false, message: 'Command is missing.' })
   }
-  if (typeof json.data.params === 'undefined') {
+  if (typeof json.data.command.params === 'undefined') {
     return res.status(400).json({ status: false, message: 'Parameters are missing.' })
   }
-  if (typeof json.data.params.deviceEUI === 'undefined') {
+  if (typeof json.data.command.params.deviceEUI === 'undefined') {
     return res.status(400).json({ status: false, message: 'Missing deviceEUI.' })
   }
   let result = false
   if (EXECUTE_SINGLE_COMMAND == 'yes') {
-    result = processCommand(SINGLE_COMMAND, json)
+    result = await processCommand(SINGLE_COMMAND, json)
   } else {
-    result = processCommand(json.data.command.name, json)
+    result = await processCommand(json)
   }
   if (result === false) {
     return res.status(400).json({ status: false, message: 'Bad command or Parameters provided.' })
