@@ -65,6 +65,9 @@ app.post('/', async (req, res) => {
   if (typeof json.data.command.deviceEUI === 'undefined') {
     return res.status(400).json({ status: false, message: 'Missing deviceEUI.' })
   }
+  if (EXECUTE_SINGLE_COMMAND == 'yes' && SINGLE_COMMAND=='') {
+    return res.status(400).json({ status: false, message: 'Single command not specified.' })
+  }
   let result = false
   if (EXECUTE_SINGLE_COMMAND == 'yes') {
     json.data.command.name = SINGLE_COMMAND
