@@ -1,13 +1,13 @@
-# Melita IO
+# Melita IO Egress
 
 |                |                            |
 | -------------- | -------------------------- |
-| Name           | Melita IO                  |
+| Name           | Melita IO Egress                  |
 | Version        | v1.0.0                     |
-| Dockerhub Link | [weevenetwork/melita-io-egress]() |
+| Dockerhub Link | [weevenetwork/melita-io-egress](https://hub.docker.com/r/weevenetwork/melita-io-egress) |
 | Authors        | Mesud Pasic                |
 
-- [Melita IO](#melita-io-egress)
+- [Melita IO Egress](#melita-io-egress)
   - [Description](#description)
   - [Features](#features)
   - [Environment Variables](#environment-variables)
@@ -26,23 +26,25 @@ Module API module for communication with melita.io API for devices controller, f
 
 ## Environment Variables
 
-- INGRESS_HOST
-- INGRESS_PORT
-- EXECUTE_SINGLE_COMMAND
-- SINGLE_COMMAND
-
-### Module Specific
-
-### Set by the weeve Agent on the edge-node
-
 | Environment Variables | type | Description |
 | --- | --- | --- |
-| MODULE_NAME | string | Name of the module |
 | EXECUTE_SINGLE_COMMAND | string | yes/no to specify if module supports only executing single command |
 | SINGLE_COMMAND | string | if EXECUTE_SINGLE_COMMAND=no, then users will have to provide in request "command" parameter with command name |
 | MELITA_API_URL | string | Melita.io API URL |
 | AUTHENTICATION_API_KEY | string | API key for authentication |
 | ERROR_URL | string | URL for passing errors during request to melita.io API |
+
+### Module Specific
+
+### Set by the weeve Agent on the edge-node
+
+| Environment Variables | type   | Description                                    |
+| --------------------- | ------ | ---------------------------------------------- |
+| MODULE_NAME           | string | Name of the module                             |
+| MODULE_TYPE           | string | Type of the module (INGRESS, PROCESS, EGRESS)  |
+| INGRESS_HOST          | string | Host to which data will be received            |
+| INGRESS_PORT          | string | Port to which data will be received            |
+| INGRESS_PATH          | string | Path to which data will be received            |
 
 ## Available custom commands
 
