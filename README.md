@@ -4,10 +4,10 @@
 | -------------- | -------------------------- |
 | Name           | Melita IO                  |
 | Version        | v1.0.0                     |
-| Dockerhub Link | [weevenetwork/melita-io]() |
+| Dockerhub Link | [weevenetwork/melita-io-egress]() |
 | Authors        | Mesud Pasic                |
 
-- [MQTT Ingress](#melita-io)
+- [Melita IO](#melita-io-egress)
   - [Description](#description)
   - [Features](#features)
   - [Environment Variables](#environment-variables)
@@ -17,7 +17,7 @@
 
 ## Description
 
-Melita.IO API module.
+Module API module for communication with melita.io API for devices controller, for sending requests to device(s).
 
 ## Features
 
@@ -38,8 +38,6 @@ Melita.IO API module.
 | Environment Variables | type | Description |
 | --- | --- | --- |
 | MODULE_NAME | string | Name of the module |
-| INGRESS_HOST | string | Host where app is running |
-| INGRESS_PORT | string | Port where app is running |
 | EXECUTE_SINGLE_COMMAND | string | yes/no to specify if module supports only executing single command |
 | SINGLE_COMMAND | string | if EXECUTE_SINGLE_COMMAND=no, then users will have to provide in request "command" parameter with command name |
 | MELITA_API_URL | string | Melita.io API URL |

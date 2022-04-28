@@ -4,7 +4,7 @@
 # PIPESTATUS with a simple $?, but I don’t do that.
 set -o errexit -o pipefail -o noclobber -o nounset
 
-echo "Entrypoint script for melita-io"
+echo "Entrypoint script for melita-io-egress"
 echo "Container args: $@"
 
 ########################
