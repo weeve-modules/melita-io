@@ -1,7 +1,7 @@
 const {
   EGRESS_URL,
-  HOST_NAME,
-  HOST_PORT,
+  INGRESS_HOST,
+  INGRESS_PORT,
   MODULE_NAME,
   EXECUTE_SINGLE_COMMAND,
   SINGLE_COMMAND,
@@ -65,7 +65,7 @@ app.post('/', async (req, res) => {
   if (typeof json.data.command.deviceEUI === 'undefined') {
     return res.status(400).json({ status: false, message: 'Missing deviceEUI.' })
   }
-  if (EXECUTE_SINGLE_COMMAND == 'yes' && SINGLE_COMMAND=='') {
+  if (EXECUTE_SINGLE_COMMAND == 'yes' && SINGLE_COMMAND == '') {
     return res.status(400).json({ status: false, message: 'Single command not specified.' })
   }
   let result = false
@@ -127,7 +127,7 @@ app.use(async (err, req, res, next) => {
 })
 
 if (require.main === module) {
-  app.listen(HOST_PORT, HOST_NAME, () => {
-    console.log(`${MODULE_NAME} listening on ${HOST_PORT}`)
+  app.listen(INGRESS_PORT, INGRESS_HOST, () => {
+    console.log(`${MODULE_NAME} listening on ${INGRESS_PORT}`)
   })
 }
