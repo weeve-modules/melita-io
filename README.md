@@ -1,11 +1,11 @@
 # Melita IO
 
-|                |                            |
-| -------------- | -------------------------- |
-| Name           | Melita IO                  |
-| Version        | v1.0.0                     |
+|                |                                   |
+| -------------- | --------------------------------- |
+| Name           | Melita IO                         |
+| Version        | v1.0.0                            |
 | Dockerhub Link | [weevenetwork/melita-io-egress]() |
-| Authors        | Mesud Pasic                |
+| Authors        | Mesud Pasic                       |
 
 - [Melita IO](#melita-io-egress)
   - [Description](#description)
@@ -68,16 +68,14 @@ Module API module for communication with melita.io API for devices controller, f
 
 ```js
 {
-	"data":{
-		"command": {
-			"name": "addDownlinkDeviceQueue",
-			"deviceEUI":"70B3D52DD3003E30",
-			"params": {
-					"confirmed": true,
-					"data": "14161712131819151B22",
-					"devEUI": "70B3D52DD3003E30",
-					"fPort": 1
-			}
+	"command": {
+		"name": "addDownlinkDeviceQueue",
+		"deviceEUI":"70B3D52DD3003E30",
+		"params": {
+				"confirmed": true,
+				"data": "14161712131819151B22",
+				"devEUI": "70B3D52DD3003E30",
+				"fPort": 1
 		}
 	}
 }
