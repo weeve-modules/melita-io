@@ -56,13 +56,13 @@ app.post('/', async (req, res) => {
   if (!json) {
     return res.status(400).json({ status: false, message: 'Payload structure is not valid.' })
   }
-  if (EXECUTE_SINGLE_COMMAND == 'no' && typeof json.data.command === 'undefined') {
+  if (EXECUTE_SINGLE_COMMAND == 'no' && typeof json.command === 'undefined') {
     return res.status(400).json({ status: false, message: 'Command is missing.' })
   }
-  if (typeof json.data.command.params === 'undefined') {
+  if (typeof json.command.params === 'undefined') {
     return res.status(400).json({ status: false, message: 'Parameters are missing.' })
   }
-  if (typeof json.data.command.deviceEUI === 'undefined') {
+  if (typeof json.command.deviceEUI === 'undefined') {
     return res.status(400).json({ status: false, message: 'Missing deviceEUI.' })
   }
   if (EXECUTE_SINGLE_COMMAND == 'yes' && SINGLE_COMMAND == '') {
@@ -70,7 +70,7 @@ app.post('/', async (req, res) => {
   }
   let result = false
   if (EXECUTE_SINGLE_COMMAND == 'yes') {
-    json.data.command.name = SINGLE_COMMAND
+    json.command.name = SINGLE_COMMAND
     result = await processCommand(json)
   } else {
     result = await processCommand(json)
