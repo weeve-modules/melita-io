@@ -15,7 +15,7 @@ environments:
   - key: MELITA_API_URL
     description: Melita API URL used for communication
     value: ''
-    default:
+    default: ''
     type: string
     name: Melita API URL    
   - key: EXECUTE_SINGLE_COMMAND
