@@ -122,6 +122,8 @@ const processCommand = async json => {
   let q_params = ''
   if (method === 'GET') q_params = `?${qs.stringify(params)}`
   if (method === 'POST') params.devEUI = deviceEUI
+  console.log(`Making call to ${MELITA_API_URL}/lorawan${path}${q_params}`)
+  console.log(`Payload is: ${JSON.stringify(params)}`)
   let res = await fetch(`${MELITA_API_URL}/lorawan${path}${q_params}`, {
     method: method,
     headers: {
