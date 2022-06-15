@@ -97,7 +97,8 @@ app.post('/', async (req, res) => {
         result,
       }),
     })
-  } else if (EGRESS_URL !== '') {
+  } else if (EGRESS_URL && EGRESS_URL !== '') {
+    console.log(`Forwarding response to ${EGRESS_URL}`)
     const callRes = await fetch(EGRESS_URL, {
       method: 'POST',
       headers: {
