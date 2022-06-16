@@ -13,7 +13,7 @@ const app = express()
 const winston = require('winston')
 const expressWinston = require('express-winston')
 const { processCommand } = require('./utils/melita')
-const { formatTimeDiff } = require('./utils/util')
+const { formatTimeDiff, isValidURL } = require('./utils/util')
 
 //initialization
 app.use(express.urlencoded({ extended: true }))
@@ -97,8 +97,7 @@ app.post('/', async (req, res) => {
         result,
       }),
     })
-  } else if (EGRESS_URL && EGRESS_URL !== '') {
-    console.log(`Forwarding response to ${EGRESS_URL}`)
+  } else if (isValidURL(EGRESS_URL)) {
     const callRes = await fetch(EGRESS_URL, {
       method: 'POST',
       headers: {
