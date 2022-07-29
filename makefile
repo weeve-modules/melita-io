@@ -1,6 +1,6 @@
 SHELL := /bin/bash # to enable source command in run_app
 
-MODULE=weevenetwork/melita-io
+MODULE=weevenetwork/melita-io-egress
 VERSION_NAME=v1.0.0
 
 lint:
