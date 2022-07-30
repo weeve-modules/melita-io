@@ -15,16 +15,19 @@ envs:                                   # Array of environment variables that wi
   - name: Melita API URL
     key: MELITA_API_URL
     description: Melita API URL used for communication
-    value: ''    
-    type: 'text'    
+    value: ''
+    type: 'text'
+    options: []                        # Options for the field if it is a select or multiple select. An array of string options
+    dependencies: []                    # List of dependencies for the field. This field is only displayed if all the dependencies are met. If
   - name: Execute single command
     key: EXECUTE_SINGLE_COMMAND
     description: Only execute single command via call
-    value: 'no'    
+    value: 'no'
     type: 'select'
     options:
       - yes
       - no
+    dependencies: []
   - name: Single command name
     key: SINGLE_COMMAND
     value: ''
@@ -47,16 +50,21 @@ envs:                                   # Array of environment variables that wi
       - flushDeviceQueue
       - suspendResumeDevice
       - getDeviceUsage
+    dependencies: []
   - name: Authentication token
     key: AUTHENTICATION_API_KEY
     description: Authentication token for authorization
-    value: ''    
+    value: ''
     type: 'text'
+    options: []
+    dependencies: []
   - name: Error reporting URL
     key: ERROR_URL
     description: URL for reporting error if request fails
-    value: ''    
+    value: ''
     type: 'text'
+    options: []
+    dependencies: []
 ports:                                  # Array of ports that will be exposed by the module.
   - container: 8080                     # Port number from the container.
     host: 8080                          # Port number to map on the host.
