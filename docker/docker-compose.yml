@@ -1,11 +1,11 @@
 version: "3.0"
 services:
-  melita-io:
+  melita-io-egress:
     build:
       context: ../
       dockerfile: docker/Dockerfile
     environment:
-      MODULE_NAME: "Melita IO Egress"
+      MODULE_NAME: "melita-io-egress"
       MODULE_TYPE: "Output"
       EGRESS_URLS: "https://testdockercompose.free.beeceptor.com"
       INGRESS_HOST: "0.0.0.0"

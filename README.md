@@ -4,7 +4,7 @@
 | -------------- | --------------------------------------------------------------------------------------- |
 | Name           | Melita IO Egress                                                                        |
 | Version        | v1.0.0                                                                                  |
-| Dockerhub Link | [weevenetwork/melita-io-egress](https://hub.docker.com/r/weevenetwork/melita-io-egress) |
+| DockerHub      | [weevenetwork/melita-io-egress](https://hub.docker.com/r/weevenetwork/melita-io-egress) |
 | Authors        | Mesud Pasic                                                                             |
 
 - [Melita IO Egress](#melita-io-egress)
@@ -44,7 +44,6 @@ Module API module for communication with melita.io API for devices controller, f
 | MODULE_TYPE           | string | Type of the module (INGRESS, PROCESS, EGRESS) |
 | INGRESS_HOST          | string | Host to which data will be received           |
 | INGRESS_PORT          | string | Port to which data will be received           |
-| INGRESS_PATH          | string | Path to which data will be received           |
 
 ## Available custom commands
 
