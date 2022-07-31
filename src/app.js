@@ -1,5 +1,4 @@
 const {
-  EGRESS_URLS,
   INGRESS_HOST,
   INGRESS_PORT,
   MODULE_NAME,
@@ -13,7 +12,6 @@ const app = express()
 const winston = require('winston')
 const expressWinston = require('express-winston')
 const { processCommand } = require('./utils/melita')
-const { formatTimeDiff } = require('./utils/util')
 
 // initialization
 app.use(express.urlencoded({ extended: true }))
@@ -50,15 +48,6 @@ app.use(
     }, // optional: allows to skip some log messages based on request and/or response
   })
 )
-const startTime = Date.now()
-// health check
-app.get('/health', async (req, res) => {
-  res.json({
-    serverStatus: 'Running',
-    uptime: formatTimeDiff(Date.now(), startTime),
-    module: MODULE_NAME,
-  })
-})
 // main post listener
 app.post('/', async (req, res) => {
   const json = req.body
@@ -97,20 +86,6 @@ app.post('/', async (req, res) => {
         result,
       }),
     })
-  } else if (EGRESS_URLS) {
-    const callRes = await fetch(EGRESS_URLS, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        data: result,
-      }),
-    })
-    if (!callRes.ok) {
-      return res.status(500).json({ status: false, message: `Error passing response data to ${EGRESS_URLS}` })
-    }
-    return res.status(200).json({ status: true, message: 'Payload processed' })
   } else {
     // parse data property, and update it
     if (typeof result.status !== 'undefined' && result.status === false) {

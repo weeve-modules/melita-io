@@ -1,11 +1,11 @@
 # Melita IO Egress
 
-|                |                                                                                         |
-| -------------- | --------------------------------------------------------------------------------------- |
-| Name           | Melita IO Egress                                                                        |
-| Version        | v1.0.0                                                                                  |
-| DockerHub      | [weevenetwork/melita-io-egress](https://hub.docker.com/r/weevenetwork/melita-io-egress) |
-| Authors        | Mesud Pasic                                                                             |
+|           |                                                                                         |
+| --------- | --------------------------------------------------------------------------------------- |
+| Name      | Melita IO Egress                                                                        |
+| Version   | v1.0.0                                                                                  |
+| DockerHub | [weevenetwork/melita-io-egress](https://hub.docker.com/r/weevenetwork/melita-io-egress) |
+| Authors   | Mesud Pasic                                                                             |
 
 - [Melita IO Egress](#melita-io-egress)
   - [Description](#description)
