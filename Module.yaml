@@ -30,6 +30,7 @@ envs:                                   # Array of environment variables that wi
     dependencies: []
   - name: Single command name
     key: SINGLE_COMMAND
+    description: Supported commands
     value: ''
     type: 'select'
     options:
